@@ -3,7 +3,7 @@ import axios from "axios";
 import domtoimage from "dom-to-image-more";
 import FileSaver from "file-saver";
 import React, { useEffect, useRef, useState } from "react";
-import { WhatsappIcon, WhatsappShareButton } from "react-share";
+import { FacebookShareButton, WhatsappIcon } from "react-share";
 import ImgHolder from "./ImgHolder";
 
 function Body() {
@@ -12,6 +12,7 @@ function Body() {
   const [allMemeImg, setAllMemeImg] = useState([]);
   const [randomImage, setRandomImage] = useState("");
   const [resultImage, setResultImage] = useState("");
+  console.log(resultImage);
   //   const handleClick = (event) => ({ [event.target.name]: event.target.value });
 
   const [isMemeGenerated, setIsMemeGenerated] = useState(false);
@@ -58,18 +59,24 @@ function Body() {
       // resultContainerRef.current.appendChild(img);
 
       // Update state for isMemeGenerated
-      img
-        .decode()
-        .then(() => {
-          resultContainerRef.current.appendChild(img);
-          setResultImage(img);
-        })
-        .catch(() => {
-          resultContainerRef.current.appendChild(
-            new Text("Could not load the nebula :(")
-          );
-        });
+      // img
+      //   .decode()
+      //   .then(() => {
+      //     resultContainerRef.current.appendChild(img);
+      //     setResultImage(img);
+      //   })
+      //   .catch(() => {
+      //     resultContainerRef.current.appendChild(
+      //       new Text("Could not load the nebula :(")
+      //     );
+      //   });
+      setResultImage(dataUrl);
     });
+    // domtoimage.toCanvas(contentContainerRef.current).then((dataUrl) => {
+    //   const imageCanvas = dataUrl.toDataURL();
+    //   setResultImage({ imageCanvas });
+    // });
+
     domtoimage.toBlob(contentContainerRef.current).then((dataUrl) => {
       FileSaver.saveAs(dataUrl, "meme.png");
       setIsMemeGenerated(true);
@@ -122,10 +129,7 @@ function Body() {
           </button>
         )}
 
-        <div
-          ref={resultContainerRef}
-          className="w-full h-full bg-green-900"
-        ></div>
+        <div ref={resultContainerRef}></div>
       </div>
       <div className=" h-full py-5 md:w-3/5 ">
         <ImgHolder
@@ -135,8 +139,8 @@ function Body() {
           random={random}
           contentContainerRef={contentContainerRef}
         />
-        <div className="  flex justify-between  mx-2 md:w-2/3 md:mx-auto  p-2 md:py-5">
-          <div className=" grid items-center  text-white cursor-pointer p-2 bg-sombe-400 rounded-full shadow shadow-sombe-400 hover:shadow-2xl">
+        <div className="flex justify-between  mx-2 md:w-2/3 md:mx-auto  p-2 md:py-5">
+          <div className="grid items-center  text-white cursor-pointer p-2 bg-sombe-400 rounded-full shadow shadow-sombe-400 hover:shadow-2xl">
             <RefreshIcon
               onClick={random}
               className="h-5 w-5 md:h-7 md:w-7 mx-1 "
@@ -148,20 +152,22 @@ function Body() {
               className="h-5 w-5 md:h-7 md:w-7 mx-1 "
             />
           </div>
-          <WhatsappShareButton
-            url={` "${resultImage.src}"`}
-            separator=" "
-            title="Your meme"
-          >
-            <div className="flex items-center text-white cursor-pointer p-2 bg-sombe-400 rounded-full shadow shadow-sombe-400 hover:shadow-2xl">
-              {/* <ShareIcon className="h-5 w-5 md:h-7 md:w-7  mx-1" /> */}
-              <h1>Share</h1>
-              <WhatsappIcon
-                round={true}
-                className="h-6 w-6 md:h-8 md:w-8  mx-1"
-              />
-            </div>
-          </WhatsappShareButton>
+          {isMemeGenerated && (
+            <FacebookShareButton
+              url={resultImage}
+              separator=" "
+              title="Your meme"
+            >
+              <div className="flex items-center text-white cursor-pointer p-2 bg-sombe-400 rounded-full shadow shadow-sombe-400 hover:shadow-2xl">
+                {/* <ShareIcon className="h-5 w-5 md:h-7 md:w-7  mx-1" /> */}
+                <h1>Share</h1>
+                <WhatsappIcon
+                  round={true}
+                  className="h-6 w-6 md:h-8 md:w-8  mx-1"
+                />
+              </div>
+            </FacebookShareButton>
+          )}
         </div>
       </div>
     </div>
