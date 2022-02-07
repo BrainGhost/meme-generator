@@ -4,6 +4,13 @@
 
 ***`Star⭐ the Project if you like it 💻`***
 
+[![](https://github.com/BrainGhost/meme-generator/blob/main/public/meme_generator.jpg)](https://github.com/BrainGhost/meme-generator/blob/main/public/meme_generator.jpg)
+
+------------
+[ **View DEMO**](https://laugh-generator.netlify.app/ "# **View DEMO**")
+
+------------
+
 > It is a simple meme generator that now allows anyone to make their own personalized meme with their own words.
 ### Technologies
 Here are some of the technology used:
@@ -18,22 +25,14 @@ I have added some features on my own like such as:
 - Images which you can now share accross other social media platform.
 
 
+## 💻Getting started
+
 ### ⚓Features and Fuctionality
 - [x] user-friendly interface.
 - [x] Generate a random image on click, and the use can add text to it.
 - [x] The generate meme can be download.
 - [x] Saving the Memes to your device
 - [x] Mobile Responsive
-
-
-## 💻Getting started
-[![](https://github.com/BrainGhost/meme-generator/blob/main/public/meme_generator.jpg)](https://github.com/BrainGhost/meme-generator/blob/main/public/meme_generator.jpg)
-
-------------
-[ **View DEMO**](https://laugh-generator.netlify.app/ "# **View DEMO**")
-
-------------
-
 
 ### Requirements
 - [Node.js](http://nodejs.dev/learn/how-to-install-nodejs "Node.js")
