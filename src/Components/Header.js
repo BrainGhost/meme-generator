@@ -8,12 +8,12 @@ function Header({ title }) {
         <h3 className="text-white text-4xl">{title}</h3>
         <img src="laugh.png" className="h-14 md:h-20" alt="" />
         <div className="hidden md:flex items-center text-xl text-white ">
-          <h3 className="mr-3">Welcome, BrainGhost</h3>
+          <h3 className="mr-3">Hey, You👉 </h3>
           <HeartIcon className="h-7 w-7  text-white" />
         </div>
       </div>
       <div className="flex justify-between px-4 py-2 text-xl md:hidden">
-        <h3>Welcome, </h3>
+        <h3>Hey, You👉</h3>
         <HeartIcon className="h-6 w-6 text-sombe-400" />
       </div>
     </>
